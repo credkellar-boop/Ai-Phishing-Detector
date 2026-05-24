@@ -50,3 +50,22 @@ def train_and_save_model():
 
 if __name__ == "__main__":
     train_and_save_model()
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, VotingClassifier
+from sklearn.svm import SVC
+
+# Define the base models
+clf1 = RandomForestClassifier(n_estimators=100, random_state=42)
+clf2 = GradientBoostingClassifier(n_estimators=100, random_state=42)
+clf3 = SVC(probability=True, random_state=42)
+
+# Create the Ensemble (The "Voting" mechanism)
+ensemble_clf = VotingClassifier(
+    estimators=[('rf', clf1), ('gb', clf2), ('svc', clf3)],
+    voting='soft' # Uses probability to make a more informed decision
+)
+
+# Train the ensemble
+ensemble_clf.fit(X_train, y_train)
+
+# Save this ensemble model instead
+joblib.dump(ensemble_clf, 'model/phishing_model.pkl')
