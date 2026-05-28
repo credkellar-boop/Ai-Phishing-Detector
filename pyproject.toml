@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-phishing-detector"
+version = "0.1.0"
+authors = [
+  { name="credkellar-boop", email="credkellar@gmail.com" },
+]
+description = "An AI-powered phishing detector using NLP and a Random Forest classifier."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "scikit-learn",
+    "streamlit",
+    "numpy",
+    "pandas"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/credkellar-boop/Ai-Phishing-Detector"
+"Bug Tracker" = "https://github.com/credkellar-boop/Ai-Phishing-Detector/issues"
+
+[tool.black]
+line-length = 88
